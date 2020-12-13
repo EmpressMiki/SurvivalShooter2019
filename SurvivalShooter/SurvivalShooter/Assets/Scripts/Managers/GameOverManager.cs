@@ -3,6 +3,7 @@
 public class GameOverManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
+    public PlayerHealth playerTwoHealth;
 	public float restartDelay = 5f;
 
 
@@ -27,6 +28,17 @@ public class GameOverManager : MonoBehaviour
 			if (restartTimer >= restartDelay) {
 				Application.LoadLevel(Application.loadedLevel);
 			}
+        }
+        else if(playerTwoHealth.currentHealth <= 0)
+        {
+            anim.SetTrigger("GameOver");
+
+            restartTimer += Time.deltaTime;
+
+            if (restartTimer >= restartDelay)
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
         }
     }
 }
